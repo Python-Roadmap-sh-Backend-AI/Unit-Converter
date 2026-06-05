@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Unit Converter</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
 
     <body>
-        <h1>This is a simple Unit Converter App</h1>
-        <a href="/length">Length Converter</a><br>
-        <a href="/weight">Weight Converter</a><br>
-        <a href="/temperature">Temperature Converter</a>
+        <div class="wrap">
+            <div class="card">
+                <h1>This is a simple Unit Converter App</h1>
+                <div class="nav">
+                    <a href="/length">Length Converter</a>
+                    <a href="/weight">Weight Converter</a>
+                    <a href="/temperature">Temperature Converter</a>
+                </div>
+                <p class="footer">Choose a converter above to get started.</p>
+            </div>
+        </div>
     </body>
 </html>

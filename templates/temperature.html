@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Temperature Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="wrap">
+      <div class="card">
     <h1>This is the Temperature Converter</h1>
     <form method="POST">
         <input
@@ -28,7 +33,10 @@
         <button type="submit">Convert</button>
     </form>
     {% if result is not none %}
-        <p>Result: {{ result }}</p>
+        <div class="result">Result: {{ result }}</div>
     {% endif %}
+    <p class="footer">Temperature conversions are approximate to two decimal places.</p>
+    </div>
+    </div>
 </body>
 </html>
