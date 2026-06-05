@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <h1>This is the Temperature Converter</h1>
+    <form method="POST">
+        <input
+            type="number"
+            step="any"
+            name="value"
+            placeholder="Enter temperature"
+            required
+        >
+        <select name="from_unit">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+        </select>
+        
+        <select name="to_unit">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+        </select>
+
+        <button type="submit">Convert</button>
+    </form>
+    {% if result is not none %}
+        <p>Result: {{ result }}</p>
+    {% endif %}
+</body>
+</html>

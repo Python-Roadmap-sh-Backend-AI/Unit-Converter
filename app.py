@@ -54,5 +54,32 @@ def weight():
         print(value, from_unit, to_unit)
     return render_template("weight.html", result=result)
 
+@app.route("/temperature", methods=["POST","GET"])
+def temperature():
+    result = None
+    ## base is temperature in Celsius
+    # use functions: first convert any unit -> celsius, then celsius -> target
+    to_celsius = {
+        "celsius": lambda x: x,
+        "fahrenheit": lambda x: (x - 32) * 5.0/9.0,
+        "kelvin": lambda x: x - 273.15
+    }
+    from_celsius = {
+        "celsius": lambda x: x,
+        "fahrenheit": lambda x: x * 9.0/5.0 + 32,
+        "kelvin": lambda x: x + 273.15
+    }
+    if request.method == "POST":
+        value = float(request.form.get("value"))
+        from_unit = request.form.get("from_unit")
+        to_unit = request.form.get("to_unit")
+
+        # convert input to Celsius, then to target unit
+        base_celsius = to_celsius[from_unit](value)
+        result = from_celsius[to_unit](base_celsius)
+
+        print(value, from_unit, to_unit)
+    return render_template("temperature.html", result=result)
+
 if __name__ == "__main__":
     app.run(debug=True)
